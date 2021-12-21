@@ -16,6 +16,8 @@ public enum LengthUnit {
 		float amountl1 = l1.amount * l1.unit.value / value;
 		float amountl2 = l2.amount * l2.unit.value / value;
 		float amountNew = amountl1-amountl2;
+		// V.R. It isn't necessary to write special method getLengthUnitFromValue
+		// It is this here!
 		return new Length (amountNew < 0 ? -amountNew : amountNew, getLengthUnitFromValue(value));
 	}
 	
