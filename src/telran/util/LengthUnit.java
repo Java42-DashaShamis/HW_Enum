@@ -13,18 +13,8 @@ public enum LengthUnit {
 	
 	//Length object with amount of the LengthUnit (LengthUnit.M.between(new Length(200f, LengthUnit.CM), new Length(1f, LengthUnit.M)) => Length(1f, LengthUnit.M))
 	public Length between(Length l1, Length l2) {
-		float amountl1 = l1.amount * l1.unit.value / value;
-		float amountl2 = l2.amount * l2.unit.value / value;
-		float amountNew = amountl1-amountl2;
-		return new Length (amountNew < 0 ? -amountNew : amountNew, getLengthUnitFromValue(value));
-	}
-	
-	private LengthUnit getLengthUnitFromValue(float value) {
-		for(LengthUnit unit: LengthUnit.values()) {
-			if(unit.getValue() == value) {
-				return unit;
-			}
-		}
-		return null;
+		
+		float amountNew = l1.convert(this).amount - l2.convert(this).amount;
+		return new Length (amountNew < 0 ? -amountNew : amountNew, this);
 	}
 }

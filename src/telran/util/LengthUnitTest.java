@@ -25,7 +25,14 @@ class LengthTest {
 
 	@Test
 	void testCompareTo() {
-		//TODO
+		assertEquals(0, lng.compareTo(lng1));
+		assertEquals(-1, lng.compareTo(lng2));
+		assertEquals(1, lng2.compareTo(lng));
+		try {
+			lng.compareTo(null);
+			fail("There should be NullPointerException");
+		} catch (NullPointerException e) {
+		}
 	}
 
 	@Test
@@ -35,7 +42,7 @@ class LengthTest {
 
 	@Test
 	void testToString() {
-		System.out.println(lng.toString());
+		assertEquals("0.2M", lng.toString());
 	}
 	@Test
 	void testBetween() {
